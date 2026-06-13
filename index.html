@@ -19,9 +19,6 @@
 
 :root{
     --white:#f5f1ed;
-    --soft:#d9d1ca;
-    --dark:#0f0f0f;
-    --overlay:rgba(0,0,0,.58);
     --glass:rgba(255,255,255,.08);
 }
 
@@ -41,128 +38,119 @@ html{
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:#000;
+    background:black;
     color:white;
     overflow-x:hidden;
 }
 
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:rgba(255,255,255,.2);
-    border-radius:20px;
-}
-
 /* =========================
-   HERO
+   VIDEO BACKGROUND FIXED
 ========================= */
 
-.hero{
-    position:relative;
+.video-background{
+    position:fixed;
+    inset:0;
     width:100%;
-    height:100vh;
+    height:100%;
     overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+    z-index:-3;
     background:black;
 }
 
-/* VIDEO */
-
-.video-bg{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-}
-
-.video-bg iframe{
+.video-background iframe{
     position:absolute;
     top:50%;
     left:50%;
+
     width:100vw;
     height:177.77vw;
+
     min-height:100vh;
     min-width:56.25vh;
+
     transform:translate(-50%, -50%);
+
     pointer-events:none;
 
     filter:
-    brightness(.45)
+    brightness(.38)
     contrast(1.05)
     saturate(.9);
 }
 
-/* OVERLAY */
+/* DARK OVERLAY */
 
-.overlay{
-    position:absolute;
+.video-overlay{
+    position:fixed;
     inset:0;
+    z-index:-2;
 
     background:
     linear-gradient(
-        rgba(0,0,0,.45),
+        rgba(0,0,0,.35),
         rgba(0,0,0,.72)
     );
-
-    z-index:1;
 }
 
-/* CONTENT */
+/* =========================
+   PARTICLES
+========================= */
 
-.hero-content{
-    position:relative;
-    z-index:2;
-    padding:20px;
-    max-width:900px;
-    animation:fadeUp 1.8s ease;
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
 }
 
-.hero-content p{
-    color:rgba(255,255,255,.72);
-    letter-spacing:5px;
-    font-size:12px;
-    font-weight:400;
-    margin-bottom:18px;
-    text-transform:uppercase;
+.particles span{
+    position:absolute;
+    display:block;
+    width:3px;
+    height:3px;
+    background:rgba(255,255,255,.12);
+    border-radius:50%;
+
+    animation:float 14s linear infinite;
 }
 
-.hero-content h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(68px,11vw,150px);
-    font-weight:500;
-    color:rgba(255,255,255,.92);
-    line-height:1;
-    margin-bottom:20px;
-
-    text-shadow:
-    0 10px 40px rgba(0,0,0,.4);
+.particles span:nth-child(1){
+    left:10%;
+    animation-duration:12s;
 }
 
-.date{
-    color:rgba(255,255,255,.65);
-    font-size:13px;
-    letter-spacing:6px;
-    margin-top:10px;
+.particles span:nth-child(2){
+    left:20%;
+    animation-duration:16s;
 }
 
-.hero-line{
-    width:110px;
-    height:1px;
-    background:rgba(255,255,255,.28);
-    margin:28px auto;
+.particles span:nth-child(3){
+    left:40%;
+    animation-duration:18s;
 }
 
-.hero-text{
-    color:rgba(255,255,255,.60);
-    font-size:13px;
-    letter-spacing:3px;
-    font-weight:300;
+.particles span:nth-child(4){
+    left:60%;
+    animation-duration:13s;
+}
+
+.particles span:nth-child(5){
+    left:80%;
+    animation-duration:15s;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+
 }
 
 /* =========================
@@ -170,7 +158,7 @@ body{
 ========================= */
 
 section{
-    padding:110px 22px;
+    padding:120px 22px;
     position:relative;
 }
 
@@ -179,6 +167,97 @@ section{
     margin:auto;
 }
 
+/* =========================
+   GLASS EFFECT
+========================= */
+
+.glass{
+    background:rgba(0,0,0,.22);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:30px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+}
+
+.hero-content{
+    max-width:900px;
+    padding:40px;
+}
+
+.hero-content p{
+    color:rgba(255,255,255,.65);
+
+    letter-spacing:5px;
+
+    font-size:12px;
+
+    margin-bottom:18px;
+
+    text-transform:uppercase;
+}
+
+.hero-content h1{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(70px,12vw,150px);
+
+    font-weight:500;
+
+    color:rgba(255,255,255,.92);
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    0 10px 40px rgba(0,0,0,.35);
+}
+
+.date{
+    color:rgba(255,255,255,.58);
+
+    letter-spacing:6px;
+
+    font-size:13px;
+}
+
+.hero-line{
+    width:120px;
+    height:1px;
+
+    background:rgba(255,255,255,.22);
+
+    margin:28px auto;
+}
+
+.hero-text{
+    color:rgba(255,255,255,.52);
+
+    font-size:13px;
+
+    letter-spacing:3px;
+}
+
+/* =========================
+   TITLES
+========================= */
+
 .section-title{
     text-align:center;
     margin-bottom:70px;
@@ -186,25 +265,23 @@ section{
 
 .section-title h2{
     font-family:'Cormorant Garamond',serif;
+
     font-size:clamp(42px,6vw,70px);
+
     font-weight:500;
-    color:rgba(255,255,255,.92);
+
     margin-bottom:12px;
+
+    color:rgba(255,255,255,.9);
 }
 
 .section-title p{
-    color:rgba(255,255,255,.58);
-    font-size:14px;
-    letter-spacing:1px;
+    color:rgba(255,255,255,.5);
 }
 
 /* =========================
    STORY
 ========================= */
-
-.story{
-    background:#0b0b0b;
-}
 
 .story-grid{
     display:grid;
@@ -213,13 +290,7 @@ section{
 }
 
 .story-card{
-    background:var(--glass);
-    border:1px solid rgba(255,255,255,.06);
-    backdrop-filter:blur(10px);
-
-    border-radius:28px;
     padding:35px;
-
     transition:.4s ease;
 }
 
@@ -229,13 +300,15 @@ section{
 
 .story-card h3{
     font-family:'Cormorant Garamond',serif;
+
     font-size:38px;
+
     margin-bottom:14px;
-    color:rgba(255,255,255,.9);
 }
 
 .story-card p{
-    color:rgba(255,255,255,.65);
+    color:rgba(255,255,255,.62);
+
     line-height:1.9;
 }
 
@@ -243,21 +316,9 @@ section{
    AYAT
 ========================= */
 
-.ayat{
-    background:#070707;
-}
-
 .ayat-box{
     max-width:1000px;
     margin:auto;
-
-    background:var(--glass);
-
-    border:1px solid rgba(255,255,255,.06);
-
-    backdrop-filter:blur(14px);
-
-    border-radius:30px;
 
     padding:55px 35px;
 
@@ -266,30 +327,33 @@ section{
 
 .arabic{
     font-size:clamp(28px,4vw,46px);
+
     line-height:2.1;
+
     margin-bottom:35px;
-    color:rgba(255,255,255,.9);
+
+    color:rgba(255,255,255,.92);
 }
 
 .latin{
-    color:rgba(255,255,255,.55);
+    color:rgba(255,255,255,.5);
+
     font-style:italic;
+
     line-height:2;
+
     margin-bottom:30px;
 }
 
 .translation{
-    color:rgba(255,255,255,.72);
+    color:rgba(255,255,255,.68);
+
     line-height:2;
 }
 
 /* =========================
    COUNTDOWN
 ========================= */
-
-.countdown{
-    background:#0b0b0b;
-}
 
 .count-grid{
     display:grid;
@@ -298,35 +362,25 @@ section{
 }
 
 .count-card{
-    background:var(--glass);
-    border:1px solid rgba(255,255,255,.06);
-
-    backdrop-filter:blur(10px);
-
     padding:40px 20px;
-
-    border-radius:26px;
-
     text-align:center;
 }
 
 .count-card h3{
     font-size:58px;
+
     font-family:'Cormorant Garamond',serif;
-    color:rgba(255,255,255,.9);
+
+    color:rgba(255,255,255,.92);
 }
 
 .count-card span{
-    color:rgba(255,255,255,.58);
+    color:rgba(255,255,255,.52);
 }
 
 /* =========================
    GALLERY
 ========================= */
-
-.gallery{
-    background:#070707;
-}
 
 .gallery-grid{
     display:grid;
@@ -336,8 +390,11 @@ section{
 
 .gallery-grid img{
     width:100%;
+
     aspect-ratio:1/1.25;
+
     object-fit:cover;
+
     border-radius:24px;
 
     transition:.45s ease;
@@ -351,21 +408,9 @@ section{
    RSVP
 ========================= */
 
-.rsvp{
-    background:#0b0b0b;
-}
-
 .form-box{
     max-width:760px;
     margin:auto;
-
-    background:var(--glass);
-
-    border:1px solid rgba(255,255,255,.06);
-
-    backdrop-filter:blur(14px);
-
-    border-radius:30px;
 
     padding:35px;
 }
@@ -374,6 +419,7 @@ input,
 textarea,
 select{
     width:100%;
+
     padding:18px;
 
     background:rgba(255,255,255,.06);
@@ -390,18 +436,19 @@ select{
     font-family:'Montserrat',sans-serif;
 }
 
-input::placeholder,
-textarea::placeholder{
-    color:rgba(255,255,255,.4);
-}
-
 textarea{
     min-height:150px;
     resize:none;
 }
 
+input::placeholder,
+textarea::placeholder{
+    color:rgba(255,255,255,.35);
+}
+
 button{
     width:100%;
+
     padding:18px;
 
     border:none;
@@ -415,8 +462,6 @@ button{
     cursor:pointer;
 
     transition:.35s ease;
-
-    font-size:15px;
 }
 
 button:hover{
@@ -432,28 +477,25 @@ button:hover{
 }
 
 .message-card{
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.05);
-
     padding:24px;
-
     border-radius:20px;
-}
-
-.message-card h4{
-    margin-bottom:10px;
+    background:rgba(255,255,255,.05);
 }
 
 .message-card p{
-    color:rgba(255,255,255,.65);
+    color:rgba(255,255,255,.6);
+    margin-top:10px;
 }
 
 .status{
     display:inline-block;
+
     margin-top:14px;
+
     padding:7px 14px;
+
     border-radius:999px;
+
     font-size:12px;
 }
 
@@ -470,21 +512,25 @@ button:hover{
 ========================= */
 
 footer{
-    background:black;
     text-align:center;
     padding:90px 20px;
 }
 
 footer h2{
     font-family:'Cormorant Garamond',serif;
+
     font-size:clamp(50px,8vw,80px);
+
     margin-bottom:18px;
 }
 
 footer p{
     color:rgba(255,255,255,.55);
+
     max-width:700px;
+
     margin:auto;
+
     line-height:2;
 }
 
@@ -494,6 +540,7 @@ footer p{
 
 .music-btn{
     position:fixed;
+
     right:25px;
     bottom:25px;
 
@@ -525,11 +572,10 @@ footer p{
 
 .music-btn:hover{
     transform:scale(1.08);
-    background:rgba(255,255,255,.14);
 }
 
 /* =========================
-   ANIMATION
+   REVEAL
 ========================= */
 
 .reveal{
@@ -543,20 +589,6 @@ footer p{
     transform:translateY(0);
 }
 
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(45px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
 /* =========================
    MOBILE
 ========================= */
@@ -564,30 +596,15 @@ footer p{
 @media(max-width:768px){
 
 .hero-content h1{
-    font-size:64px;
+    font-size:62px;
 }
 
-.hero-content p{
-    font-size:11px;
-    letter-spacing:4px;
-}
-
-.hero-text{
-    font-size:11px;
-    letter-spacing:2px;
-}
-
-.date{
-    font-size:11px;
-    letter-spacing:4px;
-}
-
-.video-bg iframe{
+.video-background iframe{
     height:190vw;
 }
 
 .section-title h2{
-    font-size:44px;
+    font-size:46px;
 }
 
 .arabic{
@@ -599,17 +616,16 @@ footer p{
 @media(max-width:480px){
 
 .hero-content h1{
-    font-size:52px;
+    font-size:50px;
 }
 
-.video-bg iframe{
+.video-background iframe{
     height:210vw;
 }
 
 .music-btn{
     width:52px;
     height:52px;
-    font-size:18px;
 }
 
 }
@@ -620,12 +636,10 @@ footer p{
 <body>
 
 <!-- =========================
-     HERO
+     FIXED VIDEO BACKGROUND
 ========================= -->
 
-<section class="hero">
-
-<div class="video-bg">
+<div class="video-background">
 
 <iframe
 src="https://www.youtube.com/embed/tmiynJuZt3w?autoplay=1&mute=1&controls=0&loop=1&playlist=tmiynJuZt3w&playsinline=1&rel=0"
@@ -637,7 +651,25 @@ allowfullscreen>
 
 </div>
 
-<div class="overlay"></div>
+<div class="video-overlay"></div>
+
+<!-- PARTICLES -->
+
+<div class="particles">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
 
 <div class="hero-content">
 
@@ -659,11 +691,9 @@ Together With Their Families
 
 </section>
 
-<!-- =========================
-     STORY
-========================= -->
+<!-- STORY -->
 
-<section class="story reveal">
+<section class="reveal">
 
 <div class="container">
 
@@ -677,7 +707,7 @@ Together With Their Families
 
 <div class="story-grid">
 
-<div class="story-card">
+<div class="story-card glass">
 
 <h3>Beginning</h3>
 
@@ -687,22 +717,22 @@ Two souls met unexpectedly and slowly became each other’s favorite place to re
 
 </div>
 
-<div class="story-card">
+<div class="story-card glass">
 
 <h3>Journey</h3>
 
 <p>
-Every laugh, every prayer, and every challenge brought us closer together.
+Every laugh, prayer, and challenge brought us closer together.
 </p>
 
 </div>
 
-<div class="story-card">
+<div class="story-card glass">
 
 <h3>Forever</h3>
 
 <p>
-Now we begin a new chapter, building a beautiful forever side by side.
+Now we begin a beautiful forever together.
 </p>
 
 </div>
@@ -713,11 +743,9 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 </section>
 
-<!-- =========================
-     AYAT
-========================= -->
+<!-- AYAT -->
 
-<section class="ayat reveal">
+<section class="reveal">
 
 <div class="container">
 
@@ -729,7 +757,7 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 </div>
 
-<div class="ayat-box">
+<div class="ayat-box glass">
 
 <div class="arabic">
 
@@ -739,13 +767,13 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 <div class="latin">
 
-(Wa min āyātihī an khalaqa lakum min anfusikum azwājal litaskunū ilaihā wa ja'ala bainakum mawaddatan wa raḥmah, inna fī żālika la'āyātillay qawmiy yatafakkarūn)
+(Wa min āyātihī an khalaqa lakum min anfusikum azwājal litaskunū ilaihā wa ja'ala bainakum mawaddatan wa raḥmah)
 
 </div>
 
 <div class="translation">
 
-"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa cinta dan kasih sayang."
+"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri."
 
 </div>
 
@@ -755,11 +783,9 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 </section>
 
-<!-- =========================
-     COUNTDOWN
-========================= -->
+<!-- COUNTDOWN -->
 
-<section class="countdown reveal">
+<section class="reveal">
 
 <div class="container">
 
@@ -767,42 +793,30 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 <h2>Countdown</h2>
 
-<p>Counting the days to our forever</p>
+<p>Counting the days to forever</p>
 
 </div>
 
 <div class="count-grid">
 
-<div class="count-card">
-
+<div class="count-card glass">
 <h3 id="days">00</h3>
-
 <span>Days</span>
-
 </div>
 
-<div class="count-card">
-
+<div class="count-card glass">
 <h3 id="hours">00</h3>
-
 <span>Hours</span>
-
 </div>
 
-<div class="count-card">
-
+<div class="count-card glass">
 <h3 id="minutes">00</h3>
-
 <span>Minutes</span>
-
 </div>
 
-<div class="count-card">
-
+<div class="count-card glass">
 <h3 id="seconds">00</h3>
-
 <span>Seconds</span>
-
 </div>
 
 </div>
@@ -811,11 +825,9 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 </section>
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- GALLERY -->
 
-<section class="gallery reveal">
+<section class="reveal">
 
 <div class="container">
 
@@ -843,11 +855,9 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 </section>
 
-<!-- =========================
-     RSVP
-========================= -->
+<!-- RSVP -->
 
-<section class="rsvp reveal">
+<section class="reveal">
 
 <div class="container">
 
@@ -859,7 +869,7 @@ Now we begin a new chapter, building a beautiful forever side by side.
 
 </div>
 
-<div class="form-box">
+<div class="form-box glass">
 
 <input type="text" id="name" placeholder="Your Name">
 
@@ -887,9 +897,7 @@ Send Wishes
 
 </section>
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -901,17 +909,13 @@ It would be a great honor and happiness for us if you could attend and bless our
 
 </footer>
 
-<!-- =========================
-     MUSIC BUTTON
-========================= -->
+<!-- MUSIC BUTTON -->
 
 <div class="music-btn" onclick="toggleMusic()">
 ♫
 </div>
 
-<!-- =========================
-     MUSIC
-========================= -->
+<!-- MUSIC -->
 
 <audio id="bgMusic" loop>
 
@@ -919,15 +923,9 @@ It would be a great honor and happiness for us if you could attend and bless our
 
 </audio>
 
-<!-- =========================
-     SCRIPT
-========================= -->
-
 <script>
 
-/* =========================
-   MUSIC
-========================= */
+/* MUSIC */
 
 const music = document.getElementById('bgMusic');
 
@@ -949,9 +947,7 @@ function toggleMusic(){
 
 }
 
-/* =========================
-   COUNTDOWN
-========================= */
+/* COUNTDOWN */
 
 const weddingDate = new Date("October 11, 2026 00:00:00").getTime();
 
@@ -961,37 +957,26 @@ setInterval(()=>{
 
     const distance = weddingDate - now;
 
-    const days = Math.floor(distance / (1000*60*60*24));
+    document.getElementById('days').innerHTML =
+    Math.floor(distance / (1000*60*60*24));
 
-    const hours = Math.floor(
-        (distance % (1000*60*60*24))
-        / (1000*60*60)
-    );
+    document.getElementById('hours').innerHTML =
+    Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
 
-    const minutes = Math.floor(
-        (distance % (1000*60*60))
-        / (1000*60)
-    );
+    document.getElementById('minutes').innerHTML =
+    Math.floor((distance % (1000*60*60)) / (1000*60));
 
-    const seconds = Math.floor(
-        (distance % (1000*60))
-        / 1000
-    );
-
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = minutes;
-    document.getElementById('seconds').innerHTML = seconds;
+    document.getElementById('seconds').innerHTML =
+    Math.floor((distance % (1000*60)) / 1000);
 
 },1000);
 
-/* =========================
-   RSVP
-========================= */
+/* RSVP */
 
 function addMessage(){
 
-    const name = document.getElementById('name').value;
+    const name =
+    document.getElementById('name').value;
 
     const attendance =
     document.getElementById('attendance').value;
@@ -1007,10 +992,11 @@ function addMessage(){
 
     }
 
-    const messageList =
+    const list =
     document.getElementById('messageList');
 
-    const div = document.createElement('div');
+    const div =
+    document.createElement('div');
 
     div.classList.add('message-card');
 
@@ -1031,19 +1017,15 @@ function addMessage(){
 
     `;
 
-    messageList.prepend(div);
+    list.prepend(div);
 
     document.getElementById('name').value = '';
-
     document.getElementById('attendance').value = '';
-
     document.getElementById('message').value = '';
 
 }
 
-/* =========================
-   REVEAL
-========================= */
+/* REVEAL */
 
 const reveals =
 document.querySelectorAll('.reveal');
@@ -1055,10 +1037,7 @@ window.addEventListener('scroll',()=>{
         const top =
         el.getBoundingClientRect().top;
 
-        const windowHeight =
-        window.innerHeight;
-
-        if(top < windowHeight - 100){
+        if(top < window.innerHeight - 100){
 
             el.classList.add('active');
 
