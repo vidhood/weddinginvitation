@@ -1,13 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ricky & Puput Wedding</title>
+<title>Riki & Puput Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -36,7 +38,7 @@ body{
     background:var(--white);
     color:#222;
     overflow-x:hidden;
-    line-height:1.7;
+    line-height:1.8;
 }
 
 /* SCROLLBAR */
@@ -62,7 +64,7 @@ section{
 }
 
 .title h2{
-    font-size:clamp(40px,6vw,68px);
+    font-size:clamp(40px,6vw,70px);
     font-family:'Cormorant Garamond',serif;
     color:var(--burgundy);
     margin-bottom:10px;
@@ -101,28 +103,47 @@ section{
     letter-spacing:3px;
 }
 
-/* HERO */
+/* HERO VIDEO */
 
 .hero{
-    min-height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    position:relative;
-    padding:30px;
+    background:black;
 }
 
-.hero::after{
-    content:'';
+.video-bg{
     position:absolute;
     inset:0;
-    backdrop-filter:blur(1px);
+    overflow:hidden;
+}
+
+.video-bg iframe{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:177.77vh;
+    height:56.25vw;
+    min-width:100%;
+    min-height:100%;
+    transform:translate(-50%, -50%);
+    pointer-events:none;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.55)
+    );
+    z-index:1;
 }
 
 .hero-content{
@@ -131,6 +152,7 @@ section{
     color:white;
     max-width:900px;
     animation:fadeUp 1.5s ease;
+    padding:20px;
 }
 
 .hero-content p{
@@ -145,25 +167,20 @@ section{
     margin:20px 0;
 }
 
-.open-btn{
-    margin-top:35px;
-    padding:17px 45px;
-    border:none;
-    border-radius:999px;
-    background:var(--burgundy);
-    color:white;
-    font-size:15px;
-    cursor:pointer;
-    transition:.35s ease;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+.hero-line{
+    width:120px;
+    height:1px;
+    background:rgba(255,255,255,.5);
+    margin:30px auto 20px;
 }
 
-.open-btn:hover{
-    background:var(--green);
-    transform:translateY(-5px);
+.hero-text{
+    color:#eee;
+    font-size:14px;
+    letter-spacing:2px;
 }
 
-/* FLOATING MUSIC */
+/* MUSIC BUTTON */
 
 .music-btn{
     position:fixed;
@@ -182,15 +199,6 @@ section{
     font-size:22px;
     box-shadow:0 10px 25px rgba(0,0,0,.25);
     animation:float 3s infinite ease-in-out;
-}
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-8px);
-    }
 }
 
 /* STORY */
@@ -220,8 +228,41 @@ section{
     font-family:'Cormorant Garamond',serif;
 }
 
-.story-box p{
-    color:#555;
+/* AYAT */
+
+.ayat{
+    background:linear-gradient(135deg,var(--green),#284f46);
+    color:white;
+    text-align:center;
+}
+
+.ayat-box{
+    max-width:1000px;
+    margin:auto;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    padding:50px 35px;
+    border-radius:30px;
+}
+
+.arabic{
+    font-size:clamp(28px,4vw,42px);
+    line-height:2.1;
+    margin-bottom:30px;
+}
+
+.latin{
+    font-style:italic;
+    color:#ddd;
+    margin-bottom:30px;
+}
+
+.translation{
+    color:#fff;
+    font-size:16px;
+    max-width:900px;
+    margin:auto;
 }
 
 /* COUNTDOWN */
@@ -252,46 +293,6 @@ section{
     font-family:'Cormorant Garamond',serif;
 }
 
-.count-box span{
-    color:#666;
-}
-
-/* TIMELINE */
-
-.timeline{
-    background:linear-gradient(135deg,var(--green),#284f46);
-    color:white;
-}
-
-.timeline .title h2{
-    color:white;
-}
-
-.timeline-wrap{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.timeline-card{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    padding:35px;
-    border-radius:28px;
-    transition:.35s ease;
-}
-
-.timeline-card:hover{
-    transform:translateY(-6px);
-}
-
-.timeline-card h3{
-    font-size:34px;
-    margin-bottom:12px;
-    font-family:'Cormorant Garamond',serif;
-}
-
 /* GALLERY */
 
 .gallery{
@@ -310,74 +311,10 @@ section{
     object-fit:cover;
     border-radius:24px;
     transition:.4s ease;
-    display:block;
 }
 
 .gallery-grid img:hover{
     transform:scale(1.03);
-}
-
-/* VIDEO */
-
-.video{
-    background:linear-gradient(135deg,var(--burgundy),var(--green));
-    color:white;
-}
-
-.video .title h2{
-    color:white;
-}
-
-.video-box{
-    max-width:1000px;
-    margin:auto;
-    border-radius:28px;
-    overflow:hidden;
-    box-shadow:0 10px 40px rgba(0,0,0,.3);
-}
-
-.video-box iframe{
-    width:100%;
-    aspect-ratio:16/9;
-    border:none;
-    display:block;
-}
-
-/* ALBUM */
-
-.album-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.album-card{
-    background:white;
-    border-radius:28px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-    transition:.35s ease;
-}
-
-.album-card:hover{
-    transform:translateY(-6px);
-}
-
-.album-card img{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-}
-
-.album-content{
-    padding:28px;
-}
-
-.album-content h3{
-    font-size:34px;
-    margin-bottom:10px;
-    color:var(--burgundy);
-    font-family:'Cormorant Garamond',serif;
 }
 
 /* RSVP */
@@ -435,6 +372,8 @@ button{
 button:hover{
     opacity:.9;
 }
+
+/* MESSAGE */
 
 .message-list{
     margin-top:35px;
@@ -516,6 +455,15 @@ footer p{
     }
 }
 
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -530,17 +478,13 @@ section{
 }
 
 .story-box,
-.timeline-card,
-.form-box{
+.form-box,
+.ayat-box{
     padding:24px;
 }
 
 .gallery-grid{
     grid-template-columns:1fr 1fr;
-}
-
-.album-card img{
-    height:220px;
 }
 
 .loader-content h1{
@@ -549,6 +493,10 @@ section{
 
 .count-box h3{
     font-size:42px;
+}
+
+.arabic{
+    line-height:1.8;
 }
 
 }
@@ -565,10 +513,6 @@ section{
 
 .gallery-grid{
     grid-template-columns:1fr;
-}
-
-.open-btn{
-    width:100%;
 }
 
 .music-btn{
@@ -597,21 +541,37 @@ section{
 
 </div>
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 
 <section class="hero reveal">
+
+<div class="video-bg">
+
+<iframe
+src="https://www.youtube.com/shorts/tmiynJuZt3w"
+title="Wedding Video"
+frameborder="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="overlay"></div>
 
 <div class="hero-content">
 
 <p>THE WEDDING OF</p>
 
-<h1>Ricky & Puput</h1>
+<h1>Riki & Puput</h1>
 
 <p>11 OCTOBER 2026</p>
 
-<button class="open-btn" onclick="scrollRSVP()">
-Open Invitation
-</button>
+<div class="hero-line"></div>
+
+<span class="hero-text">
+Together With Their Families
+</span>
 
 </div>
 
@@ -622,31 +582,54 @@ Open Invitation
 <section class="story reveal">
 
 <div class="title">
-<h2>Our Story</h2>
-<p>A little story about our journey</p>
+<h2>
+      Pada akhirnya, setiap perjalanan menemukan muaranya.
+    </h2>
+
+    <p>
+      Di antara sekian banyak kemungkinan, Allah SWT mempertemukan kami 
+      melalui perantara-Nya dalam satu kisah yang tak pernah kami duga, 
+      namun selalu menjadi bagian dari rencana-Nya yang sempurna. Waktu 
+      membawa kami melewati berbagai musim kehidupan; mengajarkan tentang 
+      penerimaan, kesabaran, dan cinta yang tumbuh semakin dalam di setiap langkah.
+    </p>
+
+    <p>
+      Kini, dengan hati yang mantap, serta diiringi doa dan restu kedua keluarga, 
+      kami memilih untuk melangkah dalam satu ikatan suci, menyatukan harapan, 
+      menyelaraskan tujuan, dan berjanji untuk saling menjaga dalam perjalanan 
+      yang akan kami tempuh bersama—menyatukan bukan hanya rasa cinta, tetapi 
+      juga komitmen, tanggung jawab, dan harapan untuk menjalani kehidupan berdua.
+    </p>
+
+    <p>
+      Semoga langkah ini menjadi awal dari keberkahan yang panjang; sebuah 
+      perjalanan untuk tumbuh, mencintai, dan mengabdi kepada-Nya. Hingga kelak, 
+      cinta yang dipertemukan di dunia ini dapat berlabuh kembali dalam ridha 
+      Allah SWT di akhirat nanti.
+    </p>
+
 </div>
 
-<div class="story-container">
+</section>
 
-<div class="story-box">
-<h3>Beginning</h3>
-<p>
-Two souls met unexpectedly, turning ordinary moments into meaningful memories.
-</p>
+<!-- AYAT -->
+
+<section class="ayat reveal">
+
+<div class="title">
+<h2 style="color:white;">Q.S Ar-Rum : 21</h2>
+<p style="color:#ddd;">A beautiful reminder about love and mercy</p>
 </div>
 
-<div class="story-box">
-<h3>Journey</h3>
-<p>
-Every chapter brought us closer together through dreams and love.
-</p>
+<div class="ayat-box">
+
+<div class="arabic">
+وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
 </div>
 
-<div class="story-box">
-<h3>Forever</h3>
-<p>
-Now we are ready to begin our forever together.
-</p>
+<div class="translation">
+"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa cinta dan kasih sayang."
 </div>
 
 </div>
@@ -688,36 +671,6 @@ Now we are ready to begin our forever together.
 
 </section>
 
-<!-- TIMELINE -->
-
-<section class="timeline reveal">
-
-<div class="title">
-<h2>Love Philosophy</h2>
-<p>What love means to us</p>
-</div>
-
-<div class="timeline-wrap">
-
-<div class="timeline-card">
-<h3>Trust</h3>
-<p>Love grows beautifully with honesty and trust.</p>
-</div>
-
-<div class="timeline-card">
-<h3>Patience</h3>
-<p>Patience keeps hearts together in every season.</p>
-</div>
-
-<div class="timeline-card">
-<h3>Commitment</h3>
-<p>Choosing each other every single day.</p>
-</div>
-
-</div>
-
-</section>
-
 <!-- GALLERY -->
 
 <section class="gallery reveal">
@@ -741,29 +694,9 @@ Now we are ready to begin our forever together.
 
 </section>
 
-<!-- VIDEO -->
-
-<section class="video reveal">
-
-<div class="title">
-<h2>Wedding Footage</h2>
-<p>Watch our prewedding moments</p>
-</div>
-
-<div class="video-box">
-
-<iframe
-src="https://www.youtube.com/embed/ScMzIvxBSi4"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</section>
-
 <!-- RSVP -->
 
-<section class="rsvp reveal" id="rsvp">
+<section class="rsvp reveal">
 
 <div class="title">
 <h2>RSVP & Wishes</h2>
@@ -804,14 +737,18 @@ It would be a great honor and happiness for us if you could attend and bless our
 
 </footer>
 
-<!-- MUSIC -->
+<!-- MUSIC BUTTON -->
 
 <div class="music-btn" onclick="toggleMusic()">
 🎵
 </div>
 
+<!-- MUSIC -->
+
 <audio id="bgMusic" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+
+<source src="music/music.mp3" type="audio/mp3">
+
 </audio>
 
 <script>
@@ -833,16 +770,6 @@ window.addEventListener('load',()=>{
     },1800);
 
 });
-
-/* SCROLL */
-
-function scrollRSVP(){
-
-    document.getElementById('rsvp').scrollIntoView({
-        behavior:'smooth'
-    });
-
-}
 
 /* MUSIC */
 
@@ -959,3 +886,4 @@ window.addEventListener('scroll',()=>{
 
 </body>
 </html>
+```
