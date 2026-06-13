@@ -5,21 +5,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Riki & Puput Wedding</title>
+<title>Ricky & Puput Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-    --burgundy:#6D1F32;
-    --green:#1E3A34;
-    --gold:#D4AF37;
-    --white:#F8F5F2;
-    --dark:#111;
-    --shadow:0 10px 35px rgba(0,0,0,.08);
+    --white:#f5f1ed;
+    --soft:#d9d1ca;
+    --dark:#0f0f0f;
+    --overlay:rgba(0,0,0,.58);
 }
 
 *{
@@ -33,76 +31,12 @@ html{
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:var(--white);
-    color:#222;
-    overflow-x:hidden;
-    line-height:1.8;
+    font-family:'Montserrat',sans-serif;
+    overflow:hidden;
+    background:black;
 }
 
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--burgundy);
-    border-radius:20px;
-}
-
-/* GENERAL */
-
-section{
-    padding:100px clamp(20px,5vw,90px);
-}
-
-.title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.title h2{
-    font-size:clamp(40px,6vw,70px);
-    font-family:'Cormorant Garamond',serif;
-    color:var(--burgundy);
-    margin-bottom:10px;
-    line-height:1.1;
-}
-
-.title p{
-    color:#666;
-}
-
-/* LOADER */
-
-#loader{
-    position:fixed;
-    inset:0;
-    background:#111;
-    z-index:99999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transition:1s;
-}
-
-.loader-content{
-    text-align:center;
-    color:white;
-}
-
-.loader-content h1{
-    font-size:72px;
-    font-family:'Cormorant Garamond',serif;
-}
-
-.loader-content p{
-    margin-top:10px;
-    letter-spacing:3px;
-}
-
-/* HERO VIDEO */
+/* HERO */
 
 .hero{
     position:relative;
@@ -116,6 +50,8 @@ section{
     background:black;
 }
 
+/* VIDEO */
+
 .video-bg{
     position:absolute;
     inset:0;
@@ -126,57 +62,91 @@ section{
     position:absolute;
     top:50%;
     left:50%;
-    width:177.77vh;
-    height:56.25vw;
-    min-width:100%;
-    min-height:100%;
+    width:100vw;
+    height:177.77vw;
+    min-height:100vh;
+    min-width:56.25vh;
     transform:translate(-50%, -50%);
     pointer-events:none;
+    filter:
+    brightness(.45)
+    contrast(1.05)
+    saturate(.9);
 }
+
+/* DARK OVERLAY */
 
 .overlay{
     position:absolute;
     inset:0;
     background:
     linear-gradient(
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.55)
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.72)
     );
     z-index:1;
 }
 
+/* CONTENT */
+
 .hero-content{
     position:relative;
     z-index:2;
-    color:white;
-    max-width:900px;
-    animation:fadeUp 1.5s ease;
     padding:20px;
+    max-width:900px;
+    animation:fadeUp 1.8s ease;
 }
+
+/* SMALL TEXT */
 
 .hero-content p{
-    letter-spacing:4px;
-    font-size:14px;
+    color:rgba(255,255,255,.72);
+    letter-spacing:5px;
+    font-size:12px;
+    font-weight:400;
+    margin-bottom:18px;
+    text-transform:uppercase;
 }
 
-.hero h1{
-    font-size:clamp(60px,12vw,130px);
+/* MAIN TITLE */
+
+.hero-content h1{
     font-family:'Cormorant Garamond',serif;
+    font-size:clamp(68px,11vw,150px);
+    font-weight:500;
+    color:rgba(255,255,255,.92);
     line-height:1;
-    margin:20px 0;
+    margin-bottom:20px;
+    letter-spacing:1px;
+    text-shadow:
+    0 10px 40px rgba(0,0,0,.4);
 }
+
+/* DATE */
+
+.date{
+    color:rgba(255,255,255,.65);
+    font-size:13px;
+    letter-spacing:6px;
+    margin-top:10px;
+}
+
+/* LINE */
 
 .hero-line{
-    width:120px;
+    width:110px;
     height:1px;
-    background:rgba(255,255,255,.5);
-    margin:30px auto 20px;
+    background:rgba(255,255,255,.28);
+    margin:28px auto;
 }
 
+/* SUBTEXT */
+
 .hero-text{
-    color:#eee;
-    font-size:14px;
-    letter-spacing:2px;
+    color:rgba(255,255,255,.60);
+    font-size:13px;
+    letter-spacing:3px;
+    font-weight:300;
 }
 
 /* MUSIC BUTTON */
@@ -185,338 +155,86 @@ section{
     position:fixed;
     right:25px;
     bottom:25px;
-    width:58px;
-    height:58px;
+    width:56px;
+    height:56px;
     border-radius:50%;
-    background:var(--burgundy);
-    color:white;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.08);
     display:flex;
     justify-content:center;
     align-items:center;
+    color:white;
+    font-size:20px;
     cursor:pointer;
     z-index:999;
-    font-size:22px;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-    animation:float 3s infinite ease-in-out;
-}
-
-/* STORY */
-
-.story-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.story-box{
-    background:white;
-    padding:35px;
-    border-radius:28px;
-    box-shadow:var(--shadow);
     transition:.35s ease;
 }
 
-.story-box:hover{
-    transform:translateY(-6px);
-}
-
-.story-box h3{
-    font-size:38px;
-    margin-bottom:15px;
-    color:var(--burgundy);
-    font-family:'Cormorant Garamond',serif;
-}
-
-/* AYAT */
-
-.ayat{
-    background:linear-gradient(135deg,var(--green),#284f46);
-    color:white;
-    text-align:center;
-}
-
-.ayat-box{
-    max-width:1000px;
-    margin:auto;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    padding:50px 35px;
-    border-radius:30px;
-}
-
-.arabic{
-    font-size:clamp(28px,4vw,42px);
-    line-height:2.1;
-    margin-bottom:30px;
-}
-
-.latin{
-    font-style:italic;
-    color:#ddd;
-    margin-bottom:30px;
-}
-
-.translation{
-    color:#fff;
-    font-size:16px;
-    max-width:900px;
-    margin:auto;
-}
-
-/* COUNTDOWN */
-
-.countdown{
-    background:#faf7f4;
-}
-
-.countdown-wrap{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:20px;
-    max-width:900px;
-    margin:auto;
-}
-
-.count-box{
-    background:white;
-    padding:40px 20px;
-    border-radius:28px;
-    text-align:center;
-    box-shadow:var(--shadow);
-}
-
-.count-box h3{
-    font-size:60px;
-    color:var(--burgundy);
-    font-family:'Cormorant Garamond',serif;
-}
-
-/* GALLERY */
-
-.gallery{
-    background:#faf7f4;
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:18px;
-}
-
-.gallery-grid img{
-    width:100%;
-    aspect-ratio:1/1.2;
-    object-fit:cover;
-    border-radius:24px;
-    transition:.4s ease;
-}
-
-.gallery-grid img:hover{
-    transform:scale(1.03);
-}
-
-/* RSVP */
-
-.rsvp{
-    background:#111;
-    color:white;
-}
-
-.rsvp .title h2{
-    color:white;
-}
-
-.form-box{
-    width:100%;
-    max-width:760px;
-    margin:auto;
-    padding:35px;
-    border-radius:30px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-}
-
-input,
-textarea,
-select{
-    width:100%;
-    padding:17px;
-    border:none;
-    outline:none;
-    border-radius:16px;
-    margin-bottom:18px;
-    font-size:15px;
-    font-family:'Poppins',sans-serif;
-}
-
-textarea{
-    min-height:150px;
-    resize:none;
-}
-
-button{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:18px;
-    background:var(--gold);
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s ease;
-}
-
-button:hover{
-    opacity:.9;
-}
-
-/* MESSAGE */
-
-.message-list{
-    margin-top:35px;
-    display:grid;
-    gap:18px;
-}
-
-.message-card{
-    background:white;
-    color:#222;
-    padding:24px;
-    border-radius:22px;
-}
-
-.message-card h4{
-    color:var(--burgundy);
-    margin-bottom:8px;
-}
-
-.status{
-    display:inline-block;
-    margin-top:14px;
-    padding:7px 16px;
-    border-radius:999px;
-    font-size:13px;
-    color:white;
-}
-
-.hadir{
-    background:green;
-}
-
-.tidak{
-    background:#999;
-}
-
-/* FOOTER */
-
-footer{
-    background:#000;
-    color:white;
-    text-align:center;
-    padding:80px 20px;
-}
-
-footer h2{
-    font-size:clamp(45px,8vw,72px);
-    margin-bottom:15px;
-    font-family:'Cormorant Garamond',serif;
-}
-
-footer p{
-    max-width:700px;
-    margin:auto;
-    color:#ddd;
+.music-btn:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,.14);
 }
 
 /* ANIMATION */
 
-.reveal{
-    opacity:0;
-    transform:translateY(60px);
-    transition:1s;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
 @keyframes fadeUp{
+
     from{
         opacity:0;
-        transform:translateY(40px);
+        transform:translateY(45px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
-}
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-8px);
-    }
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-section{
-    padding:80px 20px;
+.hero-content h1{
+    font-size:64px;
 }
 
 .hero-content p{
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.hero-text{
+    font-size:11px;
     letter-spacing:2px;
-    font-size:12px;
 }
 
-.story-box,
-.form-box,
-.ayat-box{
-    padding:24px;
+.date{
+    font-size:11px;
+    letter-spacing:4px;
 }
 
-.gallery-grid{
-    grid-template-columns:1fr 1fr;
-}
-
-.loader-content h1{
-    font-size:48px;
-}
-
-.count-box h3{
-    font-size:42px;
-}
-
-.arabic{
-    line-height:1.8;
+.video-bg iframe{
+    height:190vw;
 }
 
 }
 
-@media(max-width:520px){
+@media(max-width:480px){
 
-.hero h1{
+.hero-content h1{
     font-size:52px;
 }
 
-.title h2{
-    font-size:38px;
-}
-
-.gallery-grid{
-    grid-template-columns:1fr;
+.video-bg iframe{
+    height:210vw;
 }
 
 .music-btn{
     width:52px;
     height:52px;
+    font-size:18px;
 }
 
 }
@@ -526,23 +244,11 @@ section{
 </head>
 <body>
 
-<!-- LOADER -->
+<!-- HERO -->
 
-<div id="loader">
+<section class="hero">
 
-<div class="loader-content">
-
-<h1>Ricky & Puput</h1>
-
-<p>Loading Invitation...</p>
-
-</div>
-
-</div>
-
-<!-- HERO VIDEO -->
-
-<section class="hero reveal">
+<!-- VIDEO BACKGROUND -->
 
 <div class="video-bg">
 
@@ -556,7 +262,11 @@ allowfullscreen>
 
 </div>
 
+<!-- OVERLAY -->
+
 <div class="overlay"></div>
+
+<!-- CONTENT -->
 
 <div class="hero-content">
 
@@ -564,182 +274,24 @@ allowfullscreen>
 
 <h1>Ricky & Puput</h1>
 
-<p>11 OCTOBER 2026</p>
+<div class="date">
+11 OCTOBER 2026
+</div>
 
 <div class="hero-line"></div>
 
-<span class="hero-text">
+<div class="hero-text">
 Together With Their Families
-</span>
-
-</div>
-
-</section>
-
-<!-- STORY -->
-
-<section class="story reveal">
-
-<div class="title">
-<h2>
-      Pada akhirnya, setiap perjalanan menemukan muaranya.
-    </h2>
-
-    <p>
-      Di antara sekian banyak kemungkinan, Allah SWT mempertemukan kami 
-      melalui perantara-Nya dalam satu kisah yang tak pernah kami duga, 
-      namun selalu menjadi bagian dari rencana-Nya yang sempurna. Waktu 
-      membawa kami melewati berbagai musim kehidupan; mengajarkan tentang 
-      penerimaan, kesabaran, dan cinta yang tumbuh semakin dalam di setiap langkah.
-    </p>
-
-    <p>
-      Kini, dengan hati yang mantap, serta diiringi doa dan restu kedua keluarga, 
-      kami memilih untuk melangkah dalam satu ikatan suci, menyatukan harapan, 
-      menyelaraskan tujuan, dan berjanji untuk saling menjaga dalam perjalanan 
-      yang akan kami tempuh bersama—menyatukan bukan hanya rasa cinta, tetapi 
-      juga komitmen, tanggung jawab, dan harapan untuk menjalani kehidupan berdua.
-    </p>
-
-    <p>
-      Semoga langkah ini menjadi awal dari keberkahan yang panjang; sebuah 
-      perjalanan untuk tumbuh, mencintai, dan mengabdi kepada-Nya. Hingga kelak, 
-      cinta yang dipertemukan di dunia ini dapat berlabuh kembali dalam ridha 
-      Allah SWT di akhirat nanti.
-    </p>
-
-</div>
-
-</section>
-
-<!-- AYAT -->
-
-<section class="ayat reveal">
-
-<div class="title">
-<h2 style="color:white;">Q.S Ar-Rum : 21</h2>
-<p style="color:#ddd;">A beautiful reminder about love and mercy</p>
-</div>
-
-<div class="ayat-box">
-
-<div class="arabic">
-وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
-</div>
-
-<div class="translation">
-"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa cinta dan kasih sayang."
 </div>
 
 </div>
 
 </section>
-
-<!-- COUNTDOWN -->
-
-<section class="countdown reveal">
-
-<div class="title">
-<h2>Countdown To Forever</h2>
-<p>We can’t wait to celebrate with you</p>
-</div>
-
-<div class="countdown-wrap">
-
-<div class="count-box">
-<h3 id="days">00</h3>
-<span>Days</span>
-</div>
-
-<div class="count-box">
-<h3 id="hours">00</h3>
-<span>Hours</span>
-</div>
-
-<div class="count-box">
-<h3 id="minutes">00</h3>
-<span>Minutes</span>
-</div>
-
-<div class="count-box">
-<h3 id="seconds">00</h3>
-<span>Seconds</span>
-</div>
-
-</div>
-
-</section>
-
-<!-- GALLERY -->
-
-<section class="gallery reveal">
-
-<div class="title">
-<h2>Gallery</h2>
-<p>Captured moments of our happiness</p>
-</div>
-
-<div class="gallery-grid">
-
-<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-</section>
-
-<!-- RSVP -->
-
-<section class="rsvp reveal">
-
-<div class="title">
-<h2>RSVP & Wishes</h2>
-<p>Send your blessings and prayers</p>
-</div>
-
-<div class="form-box">
-
-<input type="text" id="name" placeholder="Your Name">
-
-<select id="attendance">
-<option value="">Attendance Confirmation</option>
-<option value="Hadir">I Will Attend</option>
-<option value="Tidak Hadir">Sorry, Can't Attend</option>
-</select>
-
-<textarea id="message" placeholder="Write your wishes..."></textarea>
-
-<button onclick="addMessage()">
-Send Wishes
-</button>
-
-<div class="message-list" id="messageList"></div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<h2>Thank You</h2>
-
-<p>
-It would be a great honor and happiness for us if you could attend and bless our special day.
-</p>
-
-</footer>
 
 <!-- MUSIC BUTTON -->
 
 <div class="music-btn" onclick="toggleMusic()">
-🎵
+♫
 </div>
 
 <!-- MUSIC -->
@@ -751,24 +303,6 @@ It would be a great honor and happiness for us if you could attend and bless our
 </audio>
 
 <script>
-
-/* LOADER */
-
-window.addEventListener('load',()=>{
-
-    setTimeout(()=>{
-
-        document.getElementById('loader').style.opacity='0';
-
-        setTimeout(()=>{
-
-            document.getElementById('loader').style.display='none';
-
-        },1000);
-
-    },1800);
-
-});
 
 /* MUSIC */
 
@@ -791,95 +325,6 @@ function toggleMusic(){
     }
 
 }
-
-/* COUNTDOWN */
-
-const weddingDate = new Date("October 11, 2026 00:00:00").getTime();
-
-setInterval(()=>{
-
-    const now = new Date().getTime();
-
-    const distance = weddingDate - now;
-
-    const days = Math.floor(distance / (1000*60*60*24));
-    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = minutes;
-    document.getElementById('seconds').innerHTML = seconds;
-
-},1000);
-
-/* RSVP */
-
-function addMessage(){
-
-    const name = document.getElementById('name').value;
-    const attendance = document.getElementById('attendance').value;
-    const message = document.getElementById('message').value;
-
-    if(name === '' || attendance === '' || message === ''){
-
-        alert('Please complete all fields');
-        return;
-
-    }
-
-    const messageList = document.getElementById('messageList');
-
-    const div = document.createElement('div');
-
-    div.classList.add('message-card');
-
-    let statusClass = attendance === 'Hadir'
-    ? 'hadir'
-    : 'tidak';
-
-    div.innerHTML = `
-    
-    <h4>${name}</h4>
-
-    <p>${message}</p>
-
-    <span class="status ${statusClass}">
-    ${attendance}
-    </span>
-
-    `;
-
-    messageList.prepend(div);
-
-    document.getElementById('name').value = '';
-    document.getElementById('attendance').value = '';
-    document.getElementById('message').value = '';
-
-}
-
-/* REVEAL */
-
-const reveals = document.querySelectorAll('.reveal');
-
-window.addEventListener('scroll',()=>{
-
-    reveals.forEach((el)=>{
-
-        const top = el.getBoundingClientRect().top;
-
-        const windowHeight = window.innerHeight;
-
-        if(top < windowHeight - 100){
-
-            el.classList.add('active');
-
-        }
-
-    });
-
-});
 
 </script>
 
