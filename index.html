@@ -13,12 +13,21 @@
 
 <style>
 
+/* =========================
+   ROOT
+========================= */
+
 :root{
     --white:#f5f1ed;
     --soft:#d9d1ca;
     --dark:#0f0f0f;
     --overlay:rgba(0,0,0,.58);
+    --glass:rgba(255,255,255,.08);
 }
+
+/* =========================
+   GLOBAL
+========================= */
 
 *{
     margin:0;
@@ -32,11 +41,25 @@ html{
 
 body{
     font-family:'Montserrat',sans-serif;
-    overflow:hidden;
-    background:black;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* HERO */
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.2);
+    border-radius:20px;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
     position:relative;
@@ -68,22 +91,25 @@ body{
     min-width:56.25vh;
     transform:translate(-50%, -50%);
     pointer-events:none;
+
     filter:
     brightness(.45)
     contrast(1.05)
     saturate(.9);
 }
 
-/* DARK OVERLAY */
+/* OVERLAY */
 
 .overlay{
     position:absolute;
     inset:0;
+
     background:
     linear-gradient(
         rgba(0,0,0,.45),
         rgba(0,0,0,.72)
     );
+
     z-index:1;
 }
 
@@ -97,8 +123,6 @@ body{
     animation:fadeUp 1.8s ease;
 }
 
-/* SMALL TEXT */
-
 .hero-content p{
     color:rgba(255,255,255,.72);
     letter-spacing:5px;
@@ -108,8 +132,6 @@ body{
     text-transform:uppercase;
 }
 
-/* MAIN TITLE */
-
 .hero-content h1{
     font-family:'Cormorant Garamond',serif;
     font-size:clamp(68px,11vw,150px);
@@ -117,12 +139,10 @@ body{
     color:rgba(255,255,255,.92);
     line-height:1;
     margin-bottom:20px;
-    letter-spacing:1px;
+
     text-shadow:
     0 10px 40px rgba(0,0,0,.4);
 }
-
-/* DATE */
 
 .date{
     color:rgba(255,255,255,.65);
@@ -131,16 +151,12 @@ body{
     margin-top:10px;
 }
 
-/* LINE */
-
 .hero-line{
     width:110px;
     height:1px;
     background:rgba(255,255,255,.28);
     margin:28px auto;
 }
-
-/* SUBTEXT */
 
 .hero-text{
     color:rgba(255,255,255,.60);
@@ -149,25 +165,361 @@ body{
     font-weight:300;
 }
 
-/* MUSIC BUTTON */
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:110px 22px;
+    position:relative;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(42px,6vw,70px);
+    font-weight:500;
+    color:rgba(255,255,255,.92);
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:rgba(255,255,255,.58);
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story{
+    background:#0b0b0b;
+}
+
+.story-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.story-card{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.06);
+    backdrop-filter:blur(10px);
+
+    border-radius:28px;
+    padding:35px;
+
+    transition:.4s ease;
+}
+
+.story-card:hover{
+    transform:translateY(-6px);
+}
+
+.story-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    margin-bottom:14px;
+    color:rgba(255,255,255,.9);
+}
+
+.story-card p{
+    color:rgba(255,255,255,.65);
+    line-height:1.9;
+}
+
+/* =========================
+   AYAT
+========================= */
+
+.ayat{
+    background:#070707;
+}
+
+.ayat-box{
+    max-width:1000px;
+    margin:auto;
+
+    background:var(--glass);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+
+    padding:55px 35px;
+
+    text-align:center;
+}
+
+.arabic{
+    font-size:clamp(28px,4vw,46px);
+    line-height:2.1;
+    margin-bottom:35px;
+    color:rgba(255,255,255,.9);
+}
+
+.latin{
+    color:rgba(255,255,255,.55);
+    font-style:italic;
+    line-height:2;
+    margin-bottom:30px;
+}
+
+.translation{
+    color:rgba(255,255,255,.72);
+    line-height:2;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+    background:#0b0b0b;
+}
+
+.count-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:22px;
+}
+
+.count-card{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(10px);
+
+    padding:40px 20px;
+
+    border-radius:26px;
+
+    text-align:center;
+}
+
+.count-card h3{
+    font-size:58px;
+    font-family:'Cormorant Garamond',serif;
+    color:rgba(255,255,255,.9);
+}
+
+.count-card span{
+    color:rgba(255,255,255,.58);
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    background:#070707;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+}
+
+.gallery-grid img{
+    width:100%;
+    aspect-ratio:1/1.25;
+    object-fit:cover;
+    border-radius:24px;
+
+    transition:.45s ease;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.03);
+}
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp{
+    background:#0b0b0b;
+}
+
+.form-box{
+    max-width:760px;
+    margin:auto;
+
+    background:var(--glass);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+
+    padding:35px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:18px;
+
+    background:rgba(255,255,255,.06);
+
+    border:none;
+    outline:none;
+
+    border-radius:18px;
+
+    color:white;
+
+    margin-bottom:18px;
+
+    font-family:'Montserrat',sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:rgba(255,255,255,.4);
+}
+
+textarea{
+    min-height:150px;
+    resize:none;
+}
+
+button{
+    width:100%;
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+    font-size:15px;
+}
+
+button:hover{
+    background:rgba(255,255,255,.18);
+}
+
+/* MESSAGE */
+
+.message-list{
+    margin-top:30px;
+    display:grid;
+    gap:18px;
+}
+
+.message-card{
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    padding:24px;
+
+    border-radius:20px;
+}
+
+.message-card h4{
+    margin-bottom:10px;
+}
+
+.message-card p{
+    color:rgba(255,255,255,.65);
+}
+
+.status{
+    display:inline-block;
+    margin-top:14px;
+    padding:7px 14px;
+    border-radius:999px;
+    font-size:12px;
+}
+
+.hadir{
+    background:#23492d;
+}
+
+.tidak{
+    background:#4b2d2d;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:90px 20px;
+}
+
+footer h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(50px,8vw,80px);
+    margin-bottom:18px;
+}
+
+footer p{
+    color:rgba(255,255,255,.55);
+    max-width:700px;
+    margin:auto;
+    line-height:2;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
 
 .music-btn{
     position:fixed;
     right:25px;
     bottom:25px;
+
     width:56px;
     height:56px;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.08);
+
     backdrop-filter:blur(10px);
+
     border:1px solid rgba(255,255,255,.08);
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     color:white;
+
     font-size:20px;
+
     cursor:pointer;
+
     z-index:999;
+
     transition:.35s ease;
 }
 
@@ -176,7 +528,20 @@ body{
     background:rgba(255,255,255,.14);
 }
 
-/* ANIMATION */
+/* =========================
+   ANIMATION
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
 
 @keyframes fadeUp{
 
@@ -192,7 +557,9 @@ body{
 
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px){
 
@@ -217,6 +584,14 @@ body{
 
 .video-bg iframe{
     height:190vw;
+}
+
+.section-title h2{
+    font-size:44px;
+}
+
+.arabic{
+    line-height:1.8;
 }
 
 }
@@ -244,11 +619,11 @@ body{
 </head>
 <body>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
-
-<!-- VIDEO BACKGROUND -->
 
 <div class="video-bg">
 
@@ -262,11 +637,7 @@ allowfullscreen>
 
 </div>
 
-<!-- OVERLAY -->
-
 <div class="overlay"></div>
-
-<!-- CONTENT -->
 
 <div class="hero-content">
 
@@ -288,13 +659,259 @@ Together With Their Families
 
 </section>
 
-<!-- MUSIC BUTTON -->
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="story reveal">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Our Story</h2>
+
+<p>A little story about our journey together</p>
+
+</div>
+
+<div class="story-grid">
+
+<div class="story-card">
+
+<h3>Beginning</h3>
+
+<p>
+Two souls met unexpectedly and slowly became each other’s favorite place to return.
+</p>
+
+</div>
+
+<div class="story-card">
+
+<h3>Journey</h3>
+
+<p>
+Every laugh, every prayer, and every challenge brought us closer together.
+</p>
+
+</div>
+
+<div class="story-card">
+
+<h3>Forever</h3>
+
+<p>
+Now we begin a new chapter, building a beautiful forever side by side.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     AYAT
+========================= -->
+
+<section class="ayat reveal">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Q.S Ar-Rum : 21</h2>
+
+<p>A beautiful reminder about love and mercy</p>
+
+</div>
+
+<div class="ayat-box">
+
+<div class="arabic">
+
+وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+
+</div>
+
+<div class="latin">
+
+(Wa min āyātihī an khalaqa lakum min anfusikum azwājal litaskunū ilaihā wa ja'ala bainakum mawaddatan wa raḥmah, inna fī żālika la'āyātillay qawmiy yatafakkarūn)
+
+</div>
+
+<div class="translation">
+
+"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa cinta dan kasih sayang."
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     COUNTDOWN
+========================= -->
+
+<section class="countdown reveal">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Countdown</h2>
+
+<p>Counting the days to our forever</p>
+
+</div>
+
+<div class="count-grid">
+
+<div class="count-card">
+
+<h3 id="days">00</h3>
+
+<span>Days</span>
+
+</div>
+
+<div class="count-card">
+
+<h3 id="hours">00</h3>
+
+<span>Hours</span>
+
+</div>
+
+<div class="count-card">
+
+<h3 id="minutes">00</h3>
+
+<span>Minutes</span>
+
+</div>
+
+<div class="count-card">
+
+<h3 id="seconds">00</h3>
+
+<span>Seconds</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery reveal">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Gallery</h2>
+
+<p>Captured moments of happiness</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     RSVP
+========================= -->
+
+<section class="rsvp reveal">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>RSVP & Wishes</h2>
+
+<p>Send your blessings and prayers</p>
+
+</div>
+
+<div class="form-box">
+
+<input type="text" id="name" placeholder="Your Name">
+
+<select id="attendance">
+
+<option value="">Attendance Confirmation</option>
+
+<option value="Hadir">I Will Attend</option>
+
+<option value="Tidak Hadir">Sorry, Can't Attend</option>
+
+</select>
+
+<textarea id="message" placeholder="Write your wishes..."></textarea>
+
+<button onclick="addMessage()">
+Send Wishes
+</button>
+
+<div class="message-list" id="messageList"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h2>Thank You</h2>
+
+<p>
+It would be a great honor and happiness for us if you could attend and bless our special day.
+</p>
+
+</footer>
+
+<!-- =========================
+     MUSIC BUTTON
+========================= -->
 
 <div class="music-btn" onclick="toggleMusic()">
 ♫
 </div>
 
-<!-- MUSIC -->
+<!-- =========================
+     MUSIC
+========================= -->
 
 <audio id="bgMusic" loop>
 
@@ -302,9 +919,15 @@ Together With Their Families
 
 </audio>
 
+<!-- =========================
+     SCRIPT
+========================= -->
+
 <script>
 
-/* MUSIC */
+/* =========================
+   MUSIC
+========================= */
 
 const music = document.getElementById('bgMusic');
 
@@ -325,6 +948,125 @@ function toggleMusic(){
     }
 
 }
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+const weddingDate = new Date("October 11, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000*60*60*24));
+
+    const hours = Math.floor(
+        (distance % (1000*60*60*24))
+        / (1000*60*60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000*60*60))
+        / (1000*60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000*60))
+        / 1000
+    );
+
+    document.getElementById('days').innerHTML = days;
+    document.getElementById('hours').innerHTML = hours;
+    document.getElementById('minutes').innerHTML = minutes;
+    document.getElementById('seconds').innerHTML = seconds;
+
+},1000);
+
+/* =========================
+   RSVP
+========================= */
+
+function addMessage(){
+
+    const name = document.getElementById('name').value;
+
+    const attendance =
+    document.getElementById('attendance').value;
+
+    const message =
+    document.getElementById('message').value;
+
+    if(name === '' || attendance === '' || message === ''){
+
+        alert('Please complete all fields');
+
+        return;
+
+    }
+
+    const messageList =
+    document.getElementById('messageList');
+
+    const div = document.createElement('div');
+
+    div.classList.add('message-card');
+
+    let statusClass =
+    attendance === 'Hadir'
+    ? 'hadir'
+    : 'tidak';
+
+    div.innerHTML = `
+    
+    <h4>${name}</h4>
+
+    <p>${message}</p>
+
+    <span class="status ${statusClass}">
+    ${attendance}
+    </span>
+
+    `;
+
+    messageList.prepend(div);
+
+    document.getElementById('name').value = '';
+
+    document.getElementById('attendance').value = '';
+
+    document.getElementById('message').value = '';
+
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+const reveals =
+document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll',()=>{
+
+    reveals.forEach((el)=>{
+
+        const top =
+        el.getBoundingClientRect().top;
+
+        const windowHeight =
+        window.innerHeight;
+
+        if(top < windowHeight - 100){
+
+            el.classList.add('active');
+
+        }
+
+    });
+
+});
 
 </script>
 
